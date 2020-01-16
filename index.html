@@ -1,0 +1,18 @@
+<html>
+  <head></head>
+  <body>
+    <div id="crafty-game"></div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crafty/0.7.1/crafty-min.js"></script>
+    <script>
+      Crafty.init(600,400, document.getElementById('crafty-game'));
+       Crafty.e("2D, Canvas, Color, Fourway, ceiling")
+        .attr({x:200, y:100, w:200, h:50})
+        .color('orange')
+        .fourway(300);
+    Crafty.e("2D, Canvas, Color, Gravity")
+        .attr({ x: 200, y: 50, w: 50, h: 50 })
+        .color("black")
+        .gravity("ceiling");
+    </script>
+  </body>
+</html>
