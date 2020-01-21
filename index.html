@@ -1,9 +1,9 @@
 <html>
   <head></head>
   <body>
-    <div id="crafty-game"></div>
+<!--     <div id="crafty-game"></div> -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crafty/0.7.1/crafty-min.js"></script>
-    <script>
+    <!--<script>
       Crafty.init(600,400, document.getElementById('crafty-game'));
        Crafty.e("2D, Canvas, Color, Fourway, ceiling")
         .attr({x:200, y:100, w:200, h:50})
@@ -13,6 +13,39 @@
         .attr({ x: 200, y: 50, w: 50, h: 50 })
         .color("black")
         .gravity("ceiling");
+    </script>-->
+    <div id="crafty-gam2"></div>
+    <script>
+        Crafty.init(600,400, document.getElementById('crafty-gam2'));
+        var playerBox = Crafty.e("2D, Canvas, Color, Fourway")
+        .attr({ x: 50, y: 50, w: 50, h: 50})
+        .color('black')
+        .fourway(200);
+        playerBox.addComponent("Jumper, Gravity, Collision");
+        playerBox.x = 50;
+        playerBox.y = 50;
+        playerBox.z = 2;
+ 
+        playerBox.attr({ x:50, y:50, z:2 })
+        var foodBox = Crafty.e("2D, Canvas, Color, Food")
+        .attr({ x: 150, y: 250, w: 10, h: 10 })
+        .color("red");
+   
+        foodBox.attr({ z:1, rotation: 45 });
+        playerBox.bind('KeyDown', function(e) {
+        if (e.key == Crafty.keys.T) {
+        this.alpha = 0.5;
+        }
+        if (e.key == Crafty.keys.O) {
+        this.alpha = 1;
+        }
+        });
+        playerBox.checkHits("Food")
+        .bind("HitOn", function(hitData) {
+        this.color("green");
+        this.w = this.w + 3;
+        this.h = this.h + 3;
+        });
     </script>
   </body>
 </html>
